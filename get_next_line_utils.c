@@ -6,7 +6,7 @@
 /*   By: yoyun <yoyun@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 19:45:54 by yoyun             #+#    #+#             */
-/*   Updated: 2022/03/22 16:13:31 by yoyun            ###   ########.fr       */
+/*   Updated: 2022/03/23 11:33:27 by yoyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ char	*ft_gnl_strjoin(char *s1, char *s2)
 	i = -1;
 	while (++i < s2_size)
 		output[i + s1_size] = s2[i];
-	output[i] = 0;
-	if (!s1)
+	output[i + s1_size] = 0;
+	if (s1)
 		free(s1);
 	return (output);
 }
@@ -52,7 +52,7 @@ char	*ft_gnl_strchr(char *s, int c)
 {
 	int	i;
 
-	if(!s)
+	if (!s)
 		return (NULL);
 	i = 0;
 	while (1)
