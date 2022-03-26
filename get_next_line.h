@@ -6,7 +6,7 @@
 /*   By: yoyun <yoyun@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 19:40:44 by yoyun             #+#    #+#             */
-/*   Updated: 2022/03/26 18:26:56 by yoyun            ###   ########.fr       */
+/*   Updated: 2022/03/26 20:49:22 by yoyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-// # define BUFFER_SIZE 1
+// # define BUFFER_SIZE 21
 
 char	*get_next_line(int fd);
 char	*free_save(char *save);

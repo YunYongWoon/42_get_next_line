@@ -6,7 +6,7 @@
 /*   By: yoyun <yoyun@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 19:45:54 by yoyun             #+#    #+#             */
-/*   Updated: 2022/03/26 18:30:04 by yoyun            ###   ########.fr       */
+/*   Updated: 2022/03/26 20:48:48 by yoyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,13 @@ int	find_nl(char *save)
 	if (!save)
 		return (0);
 	i = 0;
-	while (save[i] != '\n' && save[i])
+	while (save[i])
+	{
+		if (save[i] == '\n')
+			return (1);
 		i++;
-	if (!save[i])
-		return (0);
-	return (1);
+	}
+	return (0);
 }
 
 size_t	gnl_strlen(char *s)
@@ -69,8 +71,7 @@ char	*gnl_strjoin(char *save, char *buf, size_t size)
 		i++;
 	}
 	join_output[save_size + size] = 0;
-	if (save)
-		free(save);
+	free_save(save);
 	return (join_output);
 }
 
@@ -90,6 +91,7 @@ char	*gnl_substr(char *save, size_t start, size_t len)
 		substr_output[i] = save[start + i];
 		i++;
 	}
+	substr_output[i] = 0;
 	free(save);
 	return (substr_output);
 }
