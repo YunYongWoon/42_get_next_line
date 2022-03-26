@@ -1,21 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoyun <yoyun@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 19:45:54 by yoyun             #+#    #+#             */
-/*   Updated: 2022/03/26 21:26:39 by yoyun            ###   ########.fr       */
+/*   Updated: 2022/03/26 22:17:20 by yoyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
-char	*free_save(char *save)
+char	*free_save(char *save[], int fd)
 {
-	if (save)
-		free(save);
+	size_t	i;
+
+	i = 0;
+	if (fd < 0)
+	{
+		while (i < OPEN_MAX)
+		{
+			if (save[i])
+				free(save[i]);
+			i++;
+		}
+	}
+	else
+		if (save[fd])
+			free(save[fd]);
 	return (NULL);
 }
 
@@ -47,22 +60,22 @@ size_t	gnl_strlen(char *s)
 	return (size);
 }
 
-char	*gnl_strjoin(char *save, char *buf, size_t size)
+char	*gnl_strjoin(char *save[], char *buf, size_t size, int fd)
 {
 	size_t	save_size;
 	size_t	i;
 	char	*join_output;
 
-	save_size = gnl_strlen(save);
+	save_size = gnl_strlen(save[fd]);
 	if ((save_size + size) == 0)
-		return (free_save(save));
+		return (free_save(save, fd));
 	join_output = (char *)malloc(sizeof(char) * (save_size + size + 1));
 	if (!join_output)
-		return (free_save(save));
+		return (free_save(save, -1));
 	i = 0;
 	while (i < save_size)
 	{
-		join_output[i] = save[i];
+		join_output[i] = save[fd][i];
 		i++;
 	}
 	while (i < size + save_size)
@@ -71,27 +84,27 @@ char	*gnl_strjoin(char *save, char *buf, size_t size)
 		i++;
 	}
 	join_output[save_size + size] = 0;
-	free_save(save);
+	free_save(save, fd);
 	return (join_output);
 }
 
-char	*gnl_substr(char *save, size_t start, size_t len)
+char	*gnl_substr(char *save[], size_t start, size_t len, int fd)
 {
 	char	*substr_output;
 	size_t	i;
 
 	if (len == 0)
-		return free_save(save);
+		return (free_save(save, fd));
 	substr_output = (char *)malloc(sizeof(char) * (len + 1));
 	if (!substr_output)
-		return (free_save(save));
+		return (free_save(save, -1));
 	i = 0;
 	while (i < len)
 	{
-		substr_output[i] = save[start + i];
+		substr_output[i] = save[fd][start + i];
 		i++;
 	}
 	substr_output[i] = 0;
-	free(save);
+	free(save[fd]);
 	return (substr_output);
 }
