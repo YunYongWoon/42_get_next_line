@@ -6,12 +6,11 @@
 /*   By: yoyun <yoyun@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 19:45:51 by yoyun             #+#    #+#             */
-/*   Updated: 2022/03/26 20:49:48 by yoyun            ###   ########.fr       */
+/*   Updated: 2022/03/26 20:58:49 by yoyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
 
 char	*read_file(char *save, int fd)
 {
@@ -76,7 +75,7 @@ char	*get_next_line(int fd)
 	char		*output;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
-		return free_save(save);
+		return (NULL);
 	save = read_file(save, fd);
 	output = make_output(save);
 	save = renew_save(save);
