@@ -6,7 +6,7 @@
 /*   By: yoyun <yoyun@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 19:45:54 by yoyun             #+#    #+#             */
-/*   Updated: 2022/03/26 22:17:20 by yoyun            ###   ########.fr       */
+/*   Updated: 2022/04/01 14:35:59 by yoyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ char	*gnl_strjoin(char *save[], char *buf, size_t size, int fd)
 		join_output[i] = save[fd][i];
 		i++;
 	}
-	while (i < size + save_size)
+	while (i < (size + save_size))
 	{
 		join_output[i] = buf[i - save_size];
 		i++;

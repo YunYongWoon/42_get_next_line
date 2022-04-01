@@ -6,7 +6,7 @@
 /*   By: yoyun <yoyun@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 19:45:51 by yoyun             #+#    #+#             */
-/*   Updated: 2022/03/26 21:31:28 by yoyun            ###   ########.fr       */
+/*   Updated: 2022/04/01 14:35:08 by yoyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*read_file(char *save, int fd)
 	{
 		buf = (char *)malloc(sizeof(char) * BUFFER_SIZE);
 		if (!buf)
-			return free_save(save);
+			return (free_save(save));
 		size = read(fd, buf, BUFFER_SIZE);
 		if (size == -1)
 		{
@@ -78,7 +78,7 @@ char	*get_next_line(int fd)
 {
 	static char	*save;
 	char		*output;
-	
+
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	save = read_file(save, fd);

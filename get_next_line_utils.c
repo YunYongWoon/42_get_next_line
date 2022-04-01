@@ -6,7 +6,7 @@
 /*   By: yoyun <yoyun@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 19:45:54 by yoyun             #+#    #+#             */
-/*   Updated: 2022/03/26 21:26:39 by yoyun            ###   ########.fr       */
+/*   Updated: 2022/04/01 14:36:19 by yoyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ char	*gnl_substr(char *save, size_t start, size_t len)
 	size_t	i;
 
 	if (len == 0)
-		return free_save(save);
+		return (free_save(save));
 	substr_output = (char *)malloc(sizeof(char) * (len + 1));
 	if (!substr_output)
 		return (free_save(save));

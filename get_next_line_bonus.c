@@ -6,7 +6,7 @@
 /*   By: yoyun <yoyun@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 19:45:51 by yoyun             #+#    #+#             */
-/*   Updated: 2022/03/26 22:32:33 by yoyun            ###   ########.fr       */
+/*   Updated: 2022/04/01 14:36:42 by yoyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ char	*get_next_line(int fd)
 {
 	static char	*save[OPEN_MAX];
 	char		*output;
-	
+
 	if (fd < 0 || BUFFER_SIZE <= 0 || fd > OPEN_MAX)
 		return (NULL);
 	save[fd] = read_file(save, fd);
